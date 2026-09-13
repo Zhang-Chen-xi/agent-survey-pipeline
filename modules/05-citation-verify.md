@@ -109,6 +109,12 @@ If Steps 1-5 ALL fail to verify a reference:
    ```
 4. Suggest the user search for it directly on Google Scholar or the publisher's website
 
+### v2.0 Addenda
+
+- **Identifier binding verification** (mandatory): before writing any DOI / PMID / PMCID / arXiv-ID from an API response into the record, independently confirm it belongs to *this* paper — resolve the DOI and compare titles, or cross-check the PMID against the publisher page. Search-endpoint metadata fields are clues, not confirmed facts (some parsers walk an article's own reference list and can return another paper's identifiers). Unconfirmed identifiers stay `pending`. See `shared/evidence-protocol.md` §3.
+- **Conservative failure statuses**: network error, timeout, or no-match yield `error` / `unverified` — never evidence that a paper is fabricated. Low citation count is never a rejection reason. See `shared/evidence-protocol.md` §5.
+- **Evidence handoff**: this module establishes *identity* only. Full-text availability and claim-support grading (A/B/C) are separate states handled downstream per `shared/evidence-protocol.md` §1–§2 — a `VERIFIED` record without retrieved full text cannot back an A-grade claim.
+
 ### Hallucination Classification
 
 When a reference FAILS verification, classify the hallucination type:

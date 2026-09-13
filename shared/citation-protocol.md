@@ -2,9 +2,11 @@
 
 > Cross-cutting protocol referenced by Modules 02, 03, 05, and 09. Defines the authoritative specification for citation verification.
 
-## Protocol Version: 1.0
+## Protocol Version: 2.0
 
 This document is the single source of truth for how citations are verified across the pipeline. All modules that handle citations MUST conform to this protocol.
+
+**Companion protocol (v2.0):** `evidence-protocol.md` — governs the layers *beyond* identity verification: evidence grades A/B/C for claims, three-state separation, identifier binding verification, permission gates, and the conservative failure policy. Where this protocol establishes that a paper is *real and correctly described*, that protocol establishes what may be *asserted about it* and what the agent is *allowed to do*.
 
 ## Verification Status Codes
 
@@ -46,7 +48,7 @@ This document is the single source of truth for how citations are verified acros
 
 ## Crossref API Usage Rules
 
-1. **Always set User-Agent**: `AgentSurveyPipeline/1.0 (mailto:{CROSSREF_MAILTO})`
+1. **Always set User-Agent**: `AgentSurveyPipeline/2.0 (mailto:{CROSSREF_MAILTO})`
 2. **Rate limits**:
    - With mailto: 10 req/s, 3 concurrent
    - Without mailto: 2 req/s, 1 concurrent

@@ -35,6 +35,13 @@ When uncertain about a claim:
 - Add verification note: `[VERIFICATION NEEDED: claim about X]`
 - Never present uncertain information as established fact
 
+### Rule 6: Evidence Grade Matches Claim Weight (v2.0)
+A claim's evidence must reach the grade its weight demands — see `evidence-protocol.md` §2:
+- Critical claims (central results, quantitative conclusions, priority/novelty assertions) require **grade A**: a verbatim quote from retrieved full text with a page/section locator.
+- Abstract-only evidence (**grade B**) may support only what the abstract literally states, and must carry an `Abstract` locator.
+- Cross-citation hearsay (**grade C**) must be labeled as reported-by-source, never presented as confirmed fact.
+- A real, metadata-verified paper whose full text we never retrieved cannot back an A-grade claim.
+
 ## Detection Checklist
 
 After writing any section, self-check:
@@ -45,6 +52,8 @@ After writing any section, self-check:
 - [ ] No quotes that I cannot trace to a source
 - [ ] No "perfect" papers that conveniently support every claim (possible confirmation bias)
 - [ ] Contradictory evidence acknowledged where it exists
+- [ ] Every critical claim carries grade-A evidence (verbatim quote + locator), or was rephrased/omitted
+- [ ] No DOI/PMID written into records without independent identifier-binding confirmation
 
 ## Handling [CITATION NEEDED] Placeholders
 

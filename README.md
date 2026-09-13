@@ -1,6 +1,6 @@
 # Agent Survey Pipeline — Cross-Platform Prompt Set for Academic Survey & Paper Writing
 
-> A collection of agent-readable prompts that guide any AI agent (Claude, GPT, Gemini, Qwen, etc.) to reproduce a battle-tested academic literature survey and paper writing pipeline. Originally built and iterated across 30+ skills on QoderWork, now generalized for cross-platform use.
+> A collection of agent-readable prompts that guide any AI agent (Claude, GPT, Gemini, Qwen, etc.) to reproduce a battle-tested academic literature survey and paper writing pipeline. **v2.0** adds an evidence-grading layer, permission gates, and a unified literature schema.
 
 ## What Is This?
 
@@ -47,6 +47,7 @@ The pipeline was refined through real-world use: writing survey papers, managing
 │                                                                      │
 │  Shared Protocols & Utilities                                       │
 │  ├── shared/citation-protocol.md      → Citation verification spec  │
+│  ├── shared/evidence-protocol.md      → Evidence grades & gates (v2)│
 │  ├── shared/anti-hallucination.md     → Anti-fabrication rules      │
 │  ├── shared/writing-standards.md      → Academic writing standards  │
 │  └── shared/reference-formats.md      → BibTeX/GB-T/APA/IEEE       │
@@ -125,10 +126,23 @@ If this prompt set contributes to your research workflow, please cite:
 ```bibtex
 @misc{agent-survey-pipeline,
   title  = {Agent Survey Pipeline: Cross-Platform Prompts for Academic Literature Survey and Paper Writing},
-  year   = {2025},
-  note   = {https://github.com/RainVallo/agent-survey-pipeline}
+  year   = {2026},
+  note   = {https://github.com/Zhang-Chen-xi/agent-survey-pipeline}
 }
 ```
+
+## What's New in v2.0
+
+- **Unified literature schema** — one envelope + `paper_id` stable key shared by every module (`shared/evidence-protocol.md` §6).
+- **Three-state separation** — identity verification ≠ full-text availability ≠ claim support.
+- **Evidence grades A/B/C** — critical claims require a verbatim full-text quote with a locator; abstract-only or cross-citation evidence is explicitly downgraded.
+- **Permission gates** — six boolean capabilities (external submission, background monitoring, connector changes, browser control, dependency install, library write), all default-off; silence is never consent.
+- **Identifier binding verification** — DOI/PMID/PMCID from APIs must be independently confirmed against the paper they describe before being written into records.
+- **Conservative failure policy** — network errors stay `error`/`unverified` and never count as proof of fabrication; partial outputs are preserved.
+
+## Structure Changes in v2.0
+
+A new cross-cutting protocol was added: `shared/evidence-protocol.md`. Existing v1 module prompts remain compatible; modules 05/09 and the orchestrators now reference it for the evidence and permission layers.
 
 ## License
 
